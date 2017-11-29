@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  resources :restaurants
+  get 'reviews/new'
+
+  get 'reviews/create'
+
   root 'restaurants#index'
+  resources :restaurants do
+    resources :reviews, only: [ :new, :create ]
+  end
 end
